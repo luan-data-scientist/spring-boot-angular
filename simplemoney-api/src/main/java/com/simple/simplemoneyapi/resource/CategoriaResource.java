@@ -35,11 +35,7 @@ public class CategoriaResource {
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo){
 		Categoria categoria = categoriaRepository.findOne(codigo);
-		if(categoria != null) {
-			return ResponseEntity.ok(categoria);
-		}else {
-			return ResponseEntity.notFound().build();
-		}
+		return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
